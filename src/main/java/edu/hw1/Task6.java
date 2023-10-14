@@ -15,6 +15,7 @@ public class Task6 {
             char[] greaterSortedNumbers = Integer.toString(inputValue).toCharArray();
             Arrays.sort(greaterSortedNumbers);
             char[] lowerSortedNumbers = Integer.toString(inputValue).toCharArray();
+            Arrays.sort(lowerSortedNumbers);
             for (int index = 0; index < lowerSortedNumbers.length / 2; index++) {
                 char currentValue = greaterSortedNumbers[index];
                 lowerSortedNumbers[index] = lowerSortedNumbers[lowerSortedNumbers.length - index - 1];
