@@ -6,7 +6,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class Task2Test {
     @Test
-    @DisplayName("Тест программы 2")
+    @DisplayName("Подсчет разрядов в числе")
     void testCountDigits() {
         int example1 = 10;
         int example2 = 0;

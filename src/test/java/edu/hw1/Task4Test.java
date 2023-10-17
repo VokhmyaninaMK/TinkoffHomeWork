@@ -6,8 +6,8 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class Task4Test {
     @Test
-    @DisplayName("Тест программы 4")
-    void isNestable() {
+    @DisplayName("Исправление строки")
+    void testsFixStrig() {
 
         //1 тест
         String example1 = "eHll oowlr!d";

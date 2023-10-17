@@ -6,8 +6,8 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class Task6Test {
     @Test
-    @DisplayName("Тест программы 6")
-    void countK() {
+    @DisplayName("Количество шагов для достижения числа Капрекара")
+    void testCountK() {
 
         //1 тест
         int example1 = 8431;

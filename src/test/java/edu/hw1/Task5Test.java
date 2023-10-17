@@ -6,31 +6,35 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class Task5Test {
     @Test
-    @DisplayName("Тест программы 5")
-    void isNestable() {
+    @DisplayName("Можно ли из числа сделать палиндром")
+    void testPalindromeDescendant() {
 
-        //1 тест
+        //1 тест позитивный
         String example1 = "11302210";
 
-        //2 тест
-        String example2 = "12211120";
+        //2 тест позитивный
+        String example2 = "11211230";
 
-        //3 тест
-        String example3 = "11211230";
+        //3 тест позитивный
+        String example3 = "62017011";
 
-        //4 тест
-        String example4 = "51012100";
+        //4 тест негативный
+        String example4 = "12211120";
 
-        //5 тест
-        String example5 = "62017011";
+        //5 тест негативный
+        String example5 = "51012100";
 
-        boolean[] answersArray = {
+        boolean[] answersArrayPositive = {
             Task5.palindromeDescendant(example1),
             Task5.palindromeDescendant(example2),
-            Task5.palindromeDescendant(example3),
+            Task5.palindromeDescendant(example3)
+        };
+        assertThat(answersArrayPositive).containsExactly(true, true, true);
+
+        boolean[] answersArrayNegative = {
             Task5.palindromeDescendant(example4),
             Task5.palindromeDescendant(example5)
         };
-        assertThat(answersArray).containsExactly(true, false, true, false, true);
+        assertThat(answersArrayNegative).containsExactly( false, false);
     }
 }

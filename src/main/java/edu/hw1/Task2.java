@@ -9,7 +9,7 @@ public class Task2 {
     public static int countDigits(int initialValue) {
         int unsignedIitialValue = Math.abs(initialValue);
         int answer = 1;
-        while (Math.abs(unsignedIitialValue) > 1) {
+        while (unsignedIitialValue > 1) {
             answer++;
             unsignedIitialValue /= BASE;
         }
