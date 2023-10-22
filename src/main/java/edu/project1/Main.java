@@ -1,27 +1,65 @@
 package edu.project1;
 
+import java.util.Arrays;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
-public final class Main {
-    private final static Logger LOGGER = LogManager.getLogger();
-
+public class Main {
     private Main() {
+
+    }
+
+    final static Logger LOGGER = LogManager.getLogger();
+    private final static String MISSED = "Missed, mistake ";
+    private final static String HIT = "Hit!\nThe word: ";
+    private final static String OUT_OF = " out of ";
+    private final static String THE_WORD = ".\nThe word: ";
+
+    sealed interface GuessResult {
+        char[] state();
+
+        int attempt();
+
+        int maxAttempts();
+
+        @NotNull String message();
+
+        record Defeat(char[] state, int attempt, int maxAttempts) implements GuessResult {
+            @Override
+            @NotNull public String message() {
+                return MISSED + attempt() + OUT_OF + String.valueOf(maxAttempts()) + THE_WORD
+                    + new String(state()) + "\nYou lost!\n";
+            }
+        }
+
+        record Win(char[] state, int attempt, int maxAttempts) implements GuessResult {
+            @Override
+            @NotNull public String message() {
+                return HIT
+                    + new String(state()) + "\nYou won!\n";
+            }
+        }
+
+        record SuccessfulGuess(char[] state, int attempt, int maxAttempts) implements GuessResult {
+            @Override
+            @NotNull public String message() {
+                return HIT
+                    + new String(state()) + "\n";
+            }
+        }
+
+        record FailedGuess(char[] state, int attempt, int maxAttempts) implements GuessResult {
+            @Override
+            @NotNull public String message() {
+                return MISSED + String.valueOf(attempt()) + OUT_OF + String.valueOf(maxAttempts()) + THE_WORD
+                    + new String(state()) + "\n";
+            }
+        }
     }
 
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        LOGGER.info("Hello and welcome!");
-
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 0; i <= 2; i++) {
-
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            LOGGER.info("i = {}", i);
-        }
+        ConsoleHangman ch = new ConsoleHangman();
+        ch.run();
     }
 }
