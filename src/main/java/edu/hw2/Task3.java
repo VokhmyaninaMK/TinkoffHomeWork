@@ -14,7 +14,7 @@ public class Task3 {
     private final static int PROBABILITY_PERCENTS = 90;
     private final static Logger LOGGER = LoggerFactory.getLogger(Task3.class);
 
-     public interface Connection extends AutoCloseable {
+    public interface Connection extends AutoCloseable {
         void execute(String command);
     }
 
@@ -86,14 +86,12 @@ public class Task3 {
         void tryExecute(String command) {
 
             int counterOfAttempts = 0;
-            Connection connection = manager.getConnection();
             boolean limitExceed = false;
 
             while (counterOfAttempts < maxAttempts) {
+                Connection connection = manager.getConnection();
                 try {
-                    connection = manager.getConnection();
                     connection.execute(command);
-
                     limitExceed = true;
                     break;
                 } catch (ConnectionException connectionException) {
