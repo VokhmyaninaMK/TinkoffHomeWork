@@ -14,6 +14,6 @@ public class Task4 {
         }
         Pattern pattern = Pattern.compile("[~!@#$%^&*|]");
         Matcher matcher = pattern.matcher(password);
-        return (boolean)(matcher.find());
+        return matcher.find();
     }
 }
