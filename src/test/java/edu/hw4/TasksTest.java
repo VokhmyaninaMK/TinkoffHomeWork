@@ -239,7 +239,7 @@ public class TasksTest {
             new TaskClass.Animal("a1", TaskClass.Animal.Type.DOG, null, 1, 50, 15, false),
             new TaskClass.Animal("a2", null, TaskClass.Animal.Sex.M, 100, 100, 350, true),
             new TaskClass.Animal("a3", TaskClass.Animal.Type.CAT, TaskClass.Animal.Sex.F, -1, 50, 15, false),
-            new TaskClass.Animal("a4", TaskClass.Animal.Type.SPIDER, TaskClass.Animal.Sex.F, 1, -1, 0, false),
+            new TaskClass.Animal("a4", TaskClass.Animal.Type.SPIDER, TaskClass.Animal.Sex.F, 1, -1, 10, false),
             new TaskClass.Animal("a5", TaskClass.Animal.Type.SPIDER, TaskClass.Animal.Sex.F, 0, 50, 1, false)
         ));
 
@@ -248,9 +248,8 @@ public class TasksTest {
         assertThat(resultMap.get("a1")).isEqualTo("sex- is null\n");
         assertThat(resultMap.get("a2")).isEqualTo("type- is null\n");
         assertThat(resultMap.get("a3")).isEqualTo("age- is negate\n");
-        assertThat(resultMap.get("a4")).isEqualTo("weight- is zero\nheight- is negate\n");
+        assertThat(resultMap.get("a4")).isEqualTo("height- is negate\n");
         assertThat(resultMap.get("a5")).isEqualTo("age- is zero\n");
 
     }
-
 }

@@ -61,10 +61,10 @@ public class ValidationError {
     }
 
     private void checkAgeHeightWeight(TaskClass.Animal animal, Field field) throws IllegalAccessException {
-        if ((Integer) field.get(animal) == 0) {
-            errorMessage = field.getName() + ZERO_FIELD;
-        } else if ((Integer) field.get(animal) < 0) {
+        if ((Integer) field.get(animal) < 0) {
             errorMessage = field.getName() + NEGATE_FIELD;
+        } else if ((Integer) field.get(animal) == 0) {
+            errorMessage = field.getName() + ZERO_FIELD;
         } else {
             throw new IllegalAccessException();
         }
