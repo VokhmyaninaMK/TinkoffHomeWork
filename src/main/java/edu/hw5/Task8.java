@@ -39,8 +39,12 @@ public class Task8 {
         if (string == null) {
             return false;
         }
-        Pattern pattern = Pattern.compile("[^(1{2|3})]");
+        Pattern pattern = Pattern.compile("^11$|^111$");
         Matcher matcher = pattern.matcher(string);
+        if(matcher.find())
+            return false;
+        pattern = Pattern.compile("^[01]+$");
+        matcher = pattern.matcher(string);
         return matcher.find();
     }
 

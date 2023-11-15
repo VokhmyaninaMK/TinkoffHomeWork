@@ -80,8 +80,8 @@ public class Task8Test {
         @Override
         public Stream<? extends Arguments> provideArguments(ExtensionContext context) {
             return Stream.of(
-                Arguments.of("100101", true),
-                Arguments.of("000010", true),
+                Arguments.of("1111", true),
+                Arguments.of("1", true),
                 Arguments.of("11", false),
                 Arguments.of("111", false),
                 Arguments.of(null, false)
