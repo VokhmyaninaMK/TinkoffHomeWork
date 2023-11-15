@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Tasks {
@@ -75,7 +77,8 @@ public class Tasks {
 
     //Task6
     public static Map<TaskClass.Animal.Type, TaskClass.Animal> findHeaviestAnimalPerType(
-        List<TaskClass.Animal> originalList) {
+        List<TaskClass.Animal> originalList
+    ) {
         Map<TaskClass.Animal.Type, TaskClass.Animal> result = new HashMap<>();
         for (TaskClass.Animal animal : originalList) {
             if (!result.containsKey(animal.type()) || result.get(animal.type()).weight() < animal.weight()) {
@@ -144,7 +147,11 @@ public class Tasks {
     public static List<TaskClass.Animal> findAnimalsWithNamesLongerOneWord(
         List<TaskClass.Animal> originalList
     ) {
-        return originalList.stream().filter(it -> it.name().contains(" ")).collect(Collectors.toList());
+        Pattern pattern = Pattern.compile("^.+ .+ .+$");
+        return originalList.stream().filter(it -> {
+            Matcher matcher = pattern.matcher(it.name());
+            return matcher.find();
+        }).collect(Collectors.toList());
     }
 
     //Task14
@@ -229,7 +236,9 @@ public class Tasks {
                 }
             }
         }
-
+        if (!theHeaviestFish.type().equals(TaskClass.Animal.Type.FISH)) {
+            return null;
+        }
         return theHeaviestFish;
     }
 

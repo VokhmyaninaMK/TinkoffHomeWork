@@ -20,9 +20,17 @@ public class TasksTest {
         new TaskClass.Animal("dog_2", TaskClass.Animal.Type.DOG, TaskClass.Animal.Sex.F, 4, 41, 27, true),
         new TaskClass.Animal("bird_1", TaskClass.Animal.Type.BIRD, TaskClass.Animal.Sex.F, 1, 5, 5, false),
         new TaskClass.Animal("bird_2", TaskClass.Animal.Type.BIRD, TaskClass.Animal.Sex.M, 5, 17, 8, true),
-        new TaskClass.Animal("fish_1_with_long_name", TaskClass.Animal.Type.FISH, TaskClass.Animal.Sex.M, 3, 47, 4, true),
+        new TaskClass.Animal(
+            "fish_1_with_long_name",
+            TaskClass.Animal.Type.FISH,
+            TaskClass.Animal.Sex.M,
+            3,
+            47,
+            4,
+            true
+        ),
         new TaskClass.Animal("fish_2", TaskClass.Animal.Type.FISH, TaskClass.Animal.Sex.F, 4, 125, 125, false),
-        new TaskClass.Animal("angry spider", TaskClass.Animal.Type.SPIDER, TaskClass.Animal.Sex.F, 6, 20, 3, true)
+        new TaskClass.Animal("very angry spider", TaskClass.Animal.Type.SPIDER, TaskClass.Animal.Sex.F, 6, 20, 3, true)
     ));
 
     //Task1Test
@@ -42,7 +50,6 @@ public class TasksTest {
         //k < array.size()
         assertThat(Tasks.sortAnimalWeight(ANIMAL_LIST, 3).toArray(new TaskClass.Animal[0]))
             .extracting(TaskClass.Animal::weight).contains(125, 27, 24);
-
 
         //k > array.size()
         assertThat(Tasks.sortAnimalWeight(ANIMAL_LIST, 10).toArray(new TaskClass.Animal[0]))
@@ -98,8 +105,7 @@ public class TasksTest {
         assertThat(resultMap.get(TaskClass.Animal.Type.DOG).name()).isEqualTo("dog_2");
         assertThat(resultMap.get(TaskClass.Animal.Type.BIRD).name()).isEqualTo("bird_2");
         assertThat(resultMap.get(TaskClass.Animal.Type.FISH).name()).isEqualTo("fish_2");
-        assertThat(resultMap.get(TaskClass.Animal.Type.SPIDER).name()).isEqualTo("angry spider");
-
+        assertThat(resultMap.get(TaskClass.Animal.Type.SPIDER).name()).isEqualTo("very angry spider");
 
     }
 
@@ -109,7 +115,7 @@ public class TasksTest {
     void testFindKOldestAnimal() {
 
         //k < array.size()
-        assertThat(Tasks.findKOldestAnimal(ANIMAL_LIST, 3).name()).isEqualTo("angry spider");
+        assertThat(Tasks.findKOldestAnimal(ANIMAL_LIST, 3).name()).isEqualTo("very angry spider");
 
         //k > array.size()
         assertThat(Tasks.findKOldestAnimal(ANIMAL_LIST, 10).name()).isEqualTo("bird_1");
@@ -122,7 +128,6 @@ public class TasksTest {
         assertThat(Tasks.findHeaviestAnimalWithOptionalHeight(ANIMAL_LIST, 100).get().name())
             .isEqualTo("dog_2");
     }
-
 
     //Task9Test
     @Test
@@ -164,7 +169,7 @@ public class TasksTest {
     @DisplayName("TASK13_TEST: Checking findAnimalsWithNamesLongerOneWord function")
     void testFindAnimalsWithNamesLongerOneWord() {
         assertThat(Tasks.findAnimalsWithNamesLongerOneWord(ANIMAL_LIST)
-            .toArray(new TaskClass.Animal[0])).extracting(TaskClass.Animal::name).contains("angry spider");
+            .toArray(new TaskClass.Animal[0])).extracting(TaskClass.Animal::name).contains("very angry spider");
     }
 
     //Task14Test
@@ -192,7 +197,8 @@ public class TasksTest {
         }
 
         assertThat(nameList.toArray(new String[0])).containsExactly("bird_1", "bird_2",
-            "cat_2", "cat_1", "cat_3", "dog_2", "dog_1", "fish_2", "fish_1_with_long_name", "angry spider");
+            "cat_2", "cat_1", "cat_3", "dog_2", "dog_1", "fish_2", "fish_1_with_long_name", "very angry spider"
+        );
     }
 
     //Task17Test
@@ -216,7 +222,12 @@ public class TasksTest {
             new TaskClass.Animal("fish_4", TaskClass.Animal.Type.FISH, TaskClass.Animal.Sex.F, 100, 200, 500, false)
         ));
 
+        List<TaskClass.Animal> animalList_3 = new ArrayList<>(List.of(
+            new TaskClass.Animal("cat", TaskClass.Animal.Type.CAT, TaskClass.Animal.Sex.M, 1, 100, 25, true)
+        ));
+
         assertThat(Tasks.findTheHeaviestFish(animalList_1, animalList_2).name()).isEqualTo("fish_4");
+        assertThat(Tasks.findTheHeaviestFish(animalList_3)).isEqualTo(null);
     }
 
     //Task19-20Test
@@ -232,8 +243,7 @@ public class TasksTest {
             new TaskClass.Animal("a5", TaskClass.Animal.Type.SPIDER, TaskClass.Animal.Sex.F, 0, 50, 1, false)
         ));
 
-        Map<String,String> resultMap = Tasks.findErrorsWithAnimalsWithStrings(animalList);
-
+        Map<String, String> resultMap = Tasks.findErrorsWithAnimalsWithStrings(animalList);
 
         assertThat(resultMap.get("a1")).isEqualTo("sex- is null\n");
         assertThat(resultMap.get("a2")).isEqualTo("type- is null\n");
