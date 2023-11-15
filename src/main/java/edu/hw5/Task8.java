@@ -41,8 +41,9 @@ public class Task8 {
         }
         Pattern pattern = Pattern.compile("^11$|^111$");
         Matcher matcher = pattern.matcher(string);
-        if(matcher.find())
+        if (matcher.find()) {
             return false;
+        }
         pattern = Pattern.compile("^[01]+$");
         matcher = pattern.matcher(string);
         return matcher.find();
