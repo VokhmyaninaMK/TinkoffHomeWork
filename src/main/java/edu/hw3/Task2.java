@@ -9,8 +9,9 @@ public class Task2 {
     }
 
     static ArrayList<String> clusterize(String staples) {
-        if(!checkingSequence(staples))
+        if (!checkingSequence(staples)) {
             return null;
+        }
         ArrayList<String> result = new ArrayList<>();
         char[] originalStaples = staples.toCharArray();
         int i = 0;

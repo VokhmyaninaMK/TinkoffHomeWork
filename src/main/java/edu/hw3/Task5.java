@@ -7,11 +7,9 @@ public class Task5 {
     private Task5() {
     }
 
-    public record lastNameFirstName(String firstName, String lastName) {
-    }
 
-    static ArrayList<lastNameFirstName> parseContacts(ArrayList<String> contactList, String methodOfSort) {
-        ArrayList<lastNameFirstName> result = new ArrayList<>();
+    static ArrayList<LastNameFirstName> parseContacts(ArrayList<String> contactList, String methodOfSort) {
+        ArrayList<LastNameFirstName> result = new ArrayList<>();
         for (int i = 0; i < contactList.size(); i++) {
             String[] words = contactList.get(i).split(" ");
             if (words.length == 2) {
@@ -25,14 +23,18 @@ public class Task5 {
         }
         for (String s : contactList) {
             String[] words = s.split(" ");
-            lastNameFirstName currentPerson;
+            LastNameFirstName currentPerson;
             if (words.length == 2) {
-                currentPerson = new lastNameFirstName(words[1], words[0]);
+                currentPerson = new LastNameFirstName(words[1], words[0]);
             } else {
-                currentPerson = new lastNameFirstName(words[0], null);
+                currentPerson = new LastNameFirstName(words[0], null);
             }
             result.add(currentPerson);
         }
         return result;
+    }
+
+
+    public record LastNameFirstName(String firstName, String lastName) {
     }
 }
