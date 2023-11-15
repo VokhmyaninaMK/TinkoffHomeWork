@@ -9,9 +9,9 @@ public class Task1 {
         char[] encryption = originalString.toCharArray();
         for (int i = 0; i < encryption.length; i++) {
             if (encryption[i] >= 'a' && encryption[i] <= 'z') {
-                encryption[i] = (char) (+'a' + +'z' - +encryption[i]);
+                encryption[i] = (char) ('a' + 'z' - encryption[i]);
             } else if (encryption[i] >= 'A' && encryption[i] <= 'Z') {
-                encryption[i] = (char) (+'A' + +'Z' - +encryption[i]);
+                encryption[i] = (char) ('A' + 'Z' - encryption[i]);
             }
         }
         return new String(encryption);

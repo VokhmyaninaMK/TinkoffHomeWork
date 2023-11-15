@@ -19,10 +19,14 @@ public class Task2Test {
         ans2.add("(()())");
         assertThat(edu.hw3.Task2.clusterize("((()))(()())")).isEqualTo(ans2);
 
-        ArrayList<String> ans3= new ArrayList<>();
+        ArrayList<String> ans3 = new ArrayList<>();
         ans3.add("(())");
         ans3.add("(()(()()))");
         ans3.add("()");
         assertThat(edu.hw3.Task2.clusterize("(())(()(()()))()")).isEqualTo(ans3);
+
+        assertThat(edu.hw3.Task2.clusterize(")(")).isEqualTo(null);
+
+        assertThat(edu.hw3.Task2.clusterize("())")).isEqualTo(null);
     }
 }

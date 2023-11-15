@@ -52,15 +52,7 @@ public class Task6 {
     static class StockComparator implements Comparator<Stock> {
         @Override
         public int compare(Stock firstStock, Stock secondStock) {
-            int value = Double.compare(firstStock.cost, secondStock.cost);
-
-            if (value > 0) {
-                return -1;
-            } else if (value < 0) {
-                return 1;
-            } else {
-                return 0;
-            }
+            return Double.compare(secondStock.cost, firstStock.cost);
         }
     }
 }
