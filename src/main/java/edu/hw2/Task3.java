@@ -86,14 +86,12 @@ public class Task3 {
         void tryExecute(String command) {
 
             int counterOfAttempts = 0;
-            Connection connection = manager.getConnection();
             boolean limitExceed = false;
 
             while (counterOfAttempts < maxAttempts) {
+                Connection connection = manager.getConnection();
                 try {
-                    connection = manager.getConnection();
                     connection.execute(command);
-
                     limitExceed = true;
                     break;
                 } catch (ConnectionException connectionException) {
