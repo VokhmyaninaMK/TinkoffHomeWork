@@ -24,14 +24,19 @@ public class DFSMazeSolver {
 
         //DFS
         HashMap<MazeCell, MazeCell> previousCell = new HashMap<>();
+        if (visited[begin.x()][begin.y()] == 1) {
+            previousCell = null;
+            return null;
+        }
         previousCell.put(begin, begin);
         dfs(begin, visited, previousCell);
 
         //заполнение пути
         MazeCell current = end;
         while (current != begin) {
-            if(previousCell == null || !previousCell.containsKey(current))
+            if (previousCell == null || !previousCell.containsKey(current)) {
                 return null;
+            }
             visited[current.x()][current.y()] = WAY;
             current = previousCell.get(current);
         }
@@ -41,10 +46,6 @@ public class DFSMazeSolver {
 
     private static void dfs(MazeCell begin, int[][] visited, Map<MazeCell, MazeCell> previousCell) {
         //путь сверху
-        if(previousCell == null || visited[begin.x()][begin.y()] == 1) {
-            previousCell = null;
-            return;
-        }
         MazeCell newCell = new MazeCell(begin.x() - 1, begin.y());
         if (!previousCell.containsKey(newCell) && visited[newCell.x()][newCell.y()] != WALL) {
             previousCell.put(newCell, begin);

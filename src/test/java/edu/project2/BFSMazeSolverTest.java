@@ -15,7 +15,7 @@ public class BFSMazeSolverTest {
     void testMazeBFSSearch() {
         Maze maze = new Maze(13, 13);
 
-        maze.mazeMatrix = new int[][]{
+        maze.mazeMatrix = new int[][] {
             {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
             {1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1},
             {1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1},
@@ -31,7 +31,7 @@ public class BFSMazeSolverTest {
             {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
         };
 
-        int[][] solvedMatrix = new int[][]{
+        int[][] solvedMatrix = new int[][] {
             {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
             {1, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0, 0, 1},
             {1, 1, 1, 1, 1, 2, 1, 0, 1, 1, 1, 0, 1},
@@ -46,7 +46,6 @@ public class BFSMazeSolverTest {
             {1, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 1},
             {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
         };
-
 
         MazeCell begin = new MazeCell(1, 1);
         MazeCell end = new MazeCell(11, 11);
