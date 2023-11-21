@@ -51,5 +51,9 @@ public class BFSMazeSolverTest {
         MazeCell begin = new MazeCell(1, 1);
         MazeCell end = new MazeCell(11, 11);
         assertThat(BFSMazeSolver.mazeSolverBFS(begin, end, maze)).isEqualTo(solvedMatrix);
+
+        begin = new MazeCell(2, 2);
+        end = new MazeCell(11, 11);
+        assertThat(BFSMazeSolver.mazeSolverBFS(begin, end, maze)).isEqualTo(null);
     }
 }

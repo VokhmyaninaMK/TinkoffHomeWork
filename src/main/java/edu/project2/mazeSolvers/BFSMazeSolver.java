@@ -30,6 +30,8 @@ public class BFSMazeSolver {
         //заполнение пути
         MazeCell current = end;
         while (current != begin) {
+            if(previousCell == null || !previousCell.containsKey(current))
+                return null;
             visited[current.x()][current.y()] = WAY;
             current = previousCell.get(current);
         }
@@ -39,6 +41,8 @@ public class BFSMazeSolver {
 
     private static Map<MazeCell, MazeCell> bfs(MazeCell begin, MazeCell end, int[][] visited) {
         HashMap<MazeCell, MazeCell> previousCell = new HashMap<>();
+        if(visited[begin.x()][begin.y()] == 1)
+            return null;
         previousCell.put(begin, begin);
         Deque<MazeCell> deque = new ArrayDeque<>();
         deque.addLast(begin);
