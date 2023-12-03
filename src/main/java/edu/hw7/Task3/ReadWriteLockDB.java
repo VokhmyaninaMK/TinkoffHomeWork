@@ -21,7 +21,7 @@ public class ReadWriteLockDB implements PersonDatabase {
     }
 
     @Override
-    public synchronized void add(Person person) {
+    public void add(Person person) {
         readWriteLock.writeLock().lock();
 
         if (person.address() != null) {
@@ -41,7 +41,7 @@ public class ReadWriteLockDB implements PersonDatabase {
     }
 
     @Override
-    public synchronized void delete(int id) {
+    public void delete(int id) {
         readWriteLock.writeLock().lock();
         Person person = idMap.remove(id);
         nameMap.remove(person.name());
@@ -51,7 +51,7 @@ public class ReadWriteLockDB implements PersonDatabase {
     }
 
     @Override
-    public synchronized @Nullable Person findByName(String name) {
+    public @Nullable Person findByName(String name) {
         readWriteLock.readLock().lock();
         try {
             Person person = nameMap.get(name);
@@ -65,7 +65,7 @@ public class ReadWriteLockDB implements PersonDatabase {
     }
 
     @Override
-    public synchronized @Nullable Person findByAddress(String address) {
+    public @Nullable Person findByAddress(String address) {
         readWriteLock.readLock().lock();
         try {
             Person person = adressMap.get(address);
@@ -79,7 +79,7 @@ public class ReadWriteLockDB implements PersonDatabase {
     }
 
     @Override
-    public synchronized @Nullable Person findByPhone(String phone) {
+    public @Nullable Person findByPhone(String phone) {
         readWriteLock.readLock().lock();
         try {
             Person person = phoneNumberMap.get(phone);
